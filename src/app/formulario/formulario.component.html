@@ -1,0 +1,50 @@
+<mat-card class="form-card">
+  <mat-card-title>Formulário de Cadastro</mat-card-title>
+  <mat-card-content>
+    <form class="formulario">
+      <mat-form-field appearance="fill">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="Digite seu nome" required>
+      </mat-form-field>
+
+      <form (ngSubmit)="onSubmit()">
+        <label for="nome">Nome:</label>
+        <input id="nome" [(ngModel)]="pessoa.nome">
+
+        <label for="email">Nome:</label>
+        <input id="email" [(ngModel)]="pessoa.email">
+
+        <label for="cpf">Nome:</label>
+        <input id="cpf" [(ngModel)]="pessoa.cpf">
+
+      </form>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" placeholder="Digite seu email" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Senha</mat-label>
+        <input matInput type="password" placeholder="Digite sua senha" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Gênero</mat-label>
+        <mat-select required>
+          <mat-option value="masculino">Masculino</mat-option>
+          <mat-option value="feminino">Feminino</mat-option>
+          <mat-option value="outro">Outro</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Descrição</mat-label>
+        <textarea matInput placeholder="Digite uma descrição sobre você" rows="4"></textarea>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary">Enviar</button>
+    </form>
+  </mat-card-content>
+</mat-card>
+
