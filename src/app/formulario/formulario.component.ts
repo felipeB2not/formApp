@@ -8,8 +8,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { FormService } from '../services/form.service';
 import {FormsModule} from "@angular/forms";
-import {Pessoa} from "../models/form";
+import {Pessoa} from "../models/pessoa";
 import {Router} from "@angular/router";
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 
 @Component({
@@ -23,7 +24,8 @@ import {Router} from "@angular/router";
     MatInputModule,
     MatSelectModule,
     MatOptionModule,
-    FormsModule
+    FormsModule,
+    MatToolbarModule
   ],
 
   templateUrl: './formulario.component.html',
@@ -36,17 +38,23 @@ export class FormularioComponent {
     id: 0,
     nome: '',
     email: '',
-    cpf: ''
+    cpf: '',
+    telefone: ''
   };
 
   constructor(private _formService: FormService, private _router: Router) {}
 
   // Método chamado ao submeter o formulário
   onSubmit() {
-    // Adiciona a pessoa usando o serviço
-    this._formService.addPessoa(this.pessoa);
-
-    // Redireciona para outra página (por exemplo, listagem de pessoas)
-    this._router.navigate(['/listagem']);
+    this._formService.salvarPessoa(this.pessoa).subscribe({
+      next: (data) => {
+        console.log('Pessoa salva com sucesso', data);
+        // Aqui você pode exibir uma mensagem de sucesso ou redirecionar o usuário
+      },
+      error: (error) => {
+        console.error('Erro ao salvar a pessoa', error);
+        // Aqui você pode exibir uma mensagem de erro
+      },
+    });
   }
 }

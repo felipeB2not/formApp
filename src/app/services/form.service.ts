@@ -1,27 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Pessoa} from "../models/form";
+import { Pessoa} from "../models/pessoa";
+import {Observable} from "rxjs";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormService {
-  pessoasForm: Pessoa[] = [];
+  private apiUrl = 'http://localhost:8080/api/pessoas'; // URL do seu backend Spring
 
-  constructor() {}
+  constructor(private http: HttpClient) {
+  }
 
   // Adiciona uma pessoa ao array de pessoas
-  addPessoa(form: Pessoa): void {
-    form.id = this.pessoasForm.length > 0 ? this.pessoasForm.length + 1 : 1;
-    this.pessoasForm.push(form);
+  salvarPessoa(pessoa: Pessoa): Observable<Pessoa> {
+    return this.http.post<Pessoa>(this.apiUrl, pessoa);
   }
 
-  // Retorna o array de pessoas
-  getPessoas(): Pessoa[] {
-    return this.pessoasForm;
-  }
-
-  // Busca uma pessoa pelo ID
-  getById(id: number): Pessoa | undefined {
-    return this.pessoasForm.find((pessoa: Pessoa) => pessoa.id === id);
-  }
 }
