@@ -1,13 +1,13 @@
 <mat-card class="form-card">
   <mat-card-title>Formulário de Cadastro</mat-card-title>
   <mat-card-content>
-    <form (ngSubmit)="onSubmit()" class="formulario">
+    <form  #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" class="formulario">
 
         <label for="nome">Nome:</label>
-        <input id="nome" name="nome" [(ngModel)]="pessoa.nome" required>
+        <input id="nome" name="nome" [(ngModel)]="pessoa.nome" placeholder="Nome" required>
 
         <label for="email">Email:</label>
-        <input id="email" name="email" [(ngModel)]="pessoa.email" required email>
+        <input id="email" name="email" [(ngModel)]="pessoa.email" placeholder="Email" required email>
 
         <label for="cpf">CPF:</label>
         <input id="cpf" name="cpf" [(ngModel)]="pessoa.cpf" required>

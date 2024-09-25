@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { FormService } from '../services/form.service';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, NgForm} from "@angular/forms";
 import {Pessoa} from "../models/pessoa";
 import {Router} from "@angular/router";
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -45,11 +45,14 @@ export class FormularioComponent {
   constructor(private _formService: FormService, private _router: Router) {}
 
   // Método chamado ao submeter o formulário
-  onSubmit() {
+  onSubmit(myForm: NgForm) {
     this._formService.salvarPessoa(this.pessoa).subscribe({
       next: (data) => {
         console.log('Pessoa salva com sucesso', data);
+
         // Aqui você pode exibir uma mensagem de sucesso ou redirecionar o usuário
+        myForm.reset();
+
       },
       error: (error) => {
         console.error('Erro ao salvar a pessoa', error);
