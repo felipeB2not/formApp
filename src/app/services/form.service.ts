@@ -16,5 +16,8 @@ export class FormService {
   salvarPessoa(pessoa: Pessoa): Observable<Pessoa> {
     return this.http.post<Pessoa>(this.apiUrl, pessoa);
   }
+  getPessoas(): Observable<Pessoa[]> {
+    return this.http.get<Pessoa[]>(this.apiUrl);
+  }
 
 }
