@@ -18,5 +18,9 @@
       <button type="submit">Enviar</button>
     </form>
   </mat-card-content>
+  <mat-card-actions>
+    <!-- Botão para navegar para a listagem -->
+    <button mat-button [routerLink]="['/pessoa-list']">Ver Listagem de pessoas</button>
+  </mat-card-actions>
 </mat-card>
 
