@@ -42,6 +42,8 @@ export class FormularioComponent {
     telefone: ''
   };
 
+  pessoas: Pessoa[] = [];//tslvez apague
+
   constructor(private _formService: FormService, private _router: Router) {}
 
   // Método chamado ao submeter o formulário
@@ -58,6 +60,9 @@ export class FormularioComponent {
         console.error('Erro ao salvar a pessoa', error);
         // Aqui você pode exibir uma mensagem de erro
       },
+    });
+    this._formService.getPessoas().subscribe((pessoas) => {
+      this.pessoas = pessoas; // Armazena os dados no array pessoas
     });
   }
 }

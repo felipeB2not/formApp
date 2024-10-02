@@ -8,6 +8,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class FormService {
   private apiUrl = 'http://localhost:8080/api/pessoas'; // URL do seu backend Spring
+  private pessoaSelecionada: Pessoa | null = null;
 
   constructor(private http: HttpClient) {
   }
@@ -22,6 +23,9 @@ export class FormService {
   }
   getPessoas(): Observable<Pessoa[]> {
     return this.http.get<Pessoa[]>(this.apiUrl);
+  }
+  setPessoa(pessoa: Pessoa) {
+    this.pessoaSelecionada = pessoa;
   }
 
 }

@@ -1,0 +1,26 @@
+<mat-card class="form-card">
+  <mat-card-title>Cadastro de grupos</mat-card-title>
+
+  <form #grupoForm="ngForm" (ngSubmit)="onSubmit(grupoForm)">
+
+    <mat-form-field>
+      <mat-label>Nome do Grupo</mat-label>
+      <input matInput [(ngModel)]="grupo.nome" name="nome" required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Descrição</mat-label>
+      <input matInput [(ngModel)]="grupo.descricao" descricao="descricao" required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Selecione a Pessoa</mat-label>
+      <mat-select [(ngModel)]="grupo.pessoaid" name="pessoaid" required>
+        <mat-option *ngFor="let pessoa of pessoas" [value]="pessoa.id">{{ pessoa.nome }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button type="submit">Salvar Grupo</button>
+  </form>
+  </mat-card>
+
