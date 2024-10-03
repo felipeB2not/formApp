@@ -7,6 +7,9 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class FormService {
+  getGrupos() {
+    throw new Error('Method not implemented.');
+  }
   private apiUrl = 'http://localhost:8080/api/pessoas'; // URL do seu backend Spring
   private pessoaSelecionada: Pessoa | null = null;
 

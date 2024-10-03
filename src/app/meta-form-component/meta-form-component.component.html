@@ -1,0 +1,30 @@
+<mat-card class="form-card">
+    <mat-card-title>Cadastro de Metas</mat-card-title>
+  
+    <form #metaForm="ngForm" (ngSubmit)="onSubmit(metaForm)">
+      <mat-form-field>
+        <mat-label>Nome da Meta</mat-label>
+        <input matInput [(ngModel)]="meta.nome" name="nome" required />
+      </mat-form-field>
+  
+      <mat-form-field>
+        <mat-label>Descrição</mat-label>
+        <input matInput [(ngModel)]="meta.descricao" name="descricao" required />
+      </mat-form-field>
+  
+      <mat-form-field>
+        <mat-label>Valor</mat-label>
+        <input matInput type="number" [(ngModel)]="meta.valor" name="valor" required min="0" />
+      </mat-form-field>
+  
+      <mat-form-field>
+        <mat-label>Selecione o Grupo</mat-label>
+        <mat-select [(ngModel)]="meta.grupoid" name="grupoid" required>
+          <mat-option *ngFor="let grupo of grupos" [value]="grupo.id">{{ grupo.nome }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <button mat-raised-button type="submit">Salvar Meta</button>
+    </form>
+  </mat-card>
+  
